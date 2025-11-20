@@ -10,9 +10,27 @@
 ## CRUD Requests Endpoints
 GET all books
 - /
+
 GET book by ISBN
 - /isbn/:isbn
+
 GET books by author
 - /author/:author
+  
 GET books by title
 - /title/:title
+
+GET reviews for a book
+- /review/:isbn
+
+POST register new user
+- /register
+
+POST user login
+- /customer/login
+
+PUT add a logged-in user's review
+- /customer/auth/review/:isbn
+
+DELETE delete a logged-in user's review
+- /customer/auth/review/:isbn
