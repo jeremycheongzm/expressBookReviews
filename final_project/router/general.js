@@ -21,7 +21,7 @@ async function fetchBooksBy(field, value) {
 
 public_users.post("/register", (req,res) => {
   //Write your code here
-  const { username, password } = req.body;  // Get username and password from request body
+  const { username, password } = req.body;
   if (!username || !password) {
     return res.status(400).json({ error: "Username and password are required" });
   }
@@ -81,10 +81,17 @@ public_users.get('/review/:isbn',function (req, res) {
   const isbn = req.params.isbn;
 
   if (books[isbn]) {
-    return res.send(JSON.stringify(books[isbn].reviews, null, 2));
+    const response = {
+      title: books[isbn].title,
+      reviews: books[isbn].reviews
+    };
+
+    return res.send(JSON.stringify(response, null, 2));
   } else {
-    return res.status(404).send(JSON.stringify({ error: "Book not found" }, null, 2));
-  } 
+    return res
+      .status(404)
+      .send(JSON.stringify({ error: "Book not found" }, null, 2));
+  }
 });
 
 module.exports.general = public_users;

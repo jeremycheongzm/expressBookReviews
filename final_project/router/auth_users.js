@@ -25,15 +25,18 @@ regd_users.post("/login", (req,res) => {
   }
   if (authenticatedUser(username, password)) {
     const accessToken = jwt.sign({
-      data: password
-    }, 'access', {expiresIn: 60 * 60});
+    username 
+    }, 
+    'access', {
+    expiresIn: 60 * 60
+    });
     req.session.authorization = {accessToken, username};
     return res.status(200).send("User successfully logged in");
   } else {
     return res.status(401).json({ error: "Invalid username or password" });
   }
 });
-
+  
 // Add a book review
 regd_users.put("/auth/review/:isbn", (req, res) => {
   //Write your code here
