@@ -73,7 +73,6 @@ public_users.get('/title/:title', async function (req, res) {
   } catch (err) {
     return res.status(404).send(JSON.stringify({ error: err.message }, null, 2));
   }
-  return res.send(JSON.stringify(result, null, 2));
 });
 
 //  Get book review
